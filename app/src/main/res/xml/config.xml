@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.scriptwriterapp.movies" version="1.0.0" >
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <name>MTDB</name>
+    <description>
+        Android Application for MTDB
+    </description>
+    <author email="scriptwriter@gmail.com" href="http://www.scriptwriter.com">
+        scriptwriter
+    </author>
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <content src="https://filmku.stream" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="SplashScreenDelay" value="7000" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="Fullscreen" value="true" />
+</widget>
