@@ -1,0 +1,42 @@
+name: Android Cordova Build APK
+
+on:
+  push:
+    branches: [ "main" ] # Ganti ke "master" jika branch utama Anda bernama master
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build Debug APK
+      # Menggunakan --no-daemon agar lebih stabil di environment CI
+      # Menggunakan assembleDebug karena ini perintah standar Gradle
+      run: ./gradlew assembleDebug --stacktrace --no-daemon
+
+    - name: Get Current Date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d-%H%M')" >> $GITHUB_OUTPUT
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: Movies-App-Debug-${{ steps.date.outputs.date }}
+        # Path disesuaikan dengan struktur standar output gradle
+        path: app/build/outputs/apk/debug/*.apk
+        retention-days: 7
